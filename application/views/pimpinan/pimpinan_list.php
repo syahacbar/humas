@@ -5,7 +5,7 @@
                 <div class="box box-warning box-solid">
     
                     <div class="box-header">
-                        <h3 class="box-title">KELOLA DATA INFORMASI MASKAPAI PENERBANGAN PIMPINAN</h3>
+                        <h3 class="box-title">KELOLA MASTER DATA PIMPINAN</h3>
                     </div>
         
         <div class="box-body">
@@ -17,11 +17,7 @@
                 <tr>
                     <th width="30px">No</th>
                     <th>Nama</th>
-                    <th>Tgl Keberangkatan</th>
-                    <th>Rute Keberangkatan</th>
-                    <th>Tgl Kepulangan</th>
-                    <th>Rute Kepulangan</th>
-                    <th width="200px">Action</th>
+                    <th width="200px">Aksi</th>
                 </tr>
             </thead>
 	    
@@ -67,12 +63,12 @@
                     },
                     processing: true,
                     serverSide: true,
-                    ajax: {"url": "pimpinan/json", "type": "POST"},
+                    ajax: {"url": "<?php echo base_url('pimpinan/json');?>", "type": "POST"},
                     columns: [
                         {
                             "data": "id",
                             "orderable": false
-                        },{"data": "nama"},{"data": "tgl_keberangkatan"},{"data": "rute_keberangkatan"},{"data": "tgl_kepulangan"},{"data": "rute_kepulangan"},
+                        },{"data": "nama"},
                         {
                             "data" : "action",
                             "orderable": false,

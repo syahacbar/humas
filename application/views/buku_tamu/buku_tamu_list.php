@@ -5,14 +5,14 @@
                 <div class="box box-warning box-solid">
     
                     <div class="box-header">
-                        <h3 class="box-title">KELOLA DATA BUKU_TAMU</h3>
+                        <h3 class="box-title">KELOLA DATA BUKU TAMU</h3>
                     </div>
         
         <div class="box-body">
-        <div style="padding-bottom: 10px;"'>
-        <?php echo anchor(site_url('buku_tamu/create'), '<i class="fa fa-wpforms" aria-hidden="true"></i> Tambah Data', 'class="btn btn-danger btn-sm"'); ?>
-		<?php echo anchor(site_url('buku_tamu/excel'), '<i class="fa fa-file-excel-o" aria-hidden="true"></i> Export Ms Excel', 'class="btn btn-success btn-sm"'); ?>
-		<?php echo anchor(site_url('buku_tamu/word'), '<i class="fa fa-file-word-o" aria-hidden="true"></i> Export Ms Word', 'class="btn btn-primary btn-sm"'); ?></div>
+        <div style="padding-bottom: 10px;">
+        <?php echo anchor(site_url('buku_tamu/create'), '<i class="fa fa-wpforms" aria-hidden="true"></i> Tambah Data', 'class="btn btn-warning btn-sm"'); ?>
+		<?php echo anchor(site_url('buku_tamu/pdf'), '<i class="fa fa-file-pdf-o" aria-hidden="true"></i> Export PDF', 'class="btn btn-danger btn-sm" target="BLANK"'); ?>
+		<?php echo anchor(site_url('buku_tamu/word'), '<i class="fa fa-file-word-o" aria-hidden="true"></i> Export Ms Word', 'class="btn btn-primary btn-sm" target="BLANK"'); ?></div>
         <table class="table table-bordered table-striped" id="mytable">
             <thead>
                 <tr>

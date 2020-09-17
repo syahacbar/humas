@@ -15,7 +15,7 @@ class Agenda_kegiatan extends CI_Controller
 	    $this->load->library('datatables');
     }
 
-    public function index()
+    public function index() 
     {
         $this->template->load('template','agenda_kegiatan/agenda_kegiatan_pimpinan');
     } 

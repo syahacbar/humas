@@ -5,7 +5,7 @@
                 <div class="box box-warning box-solid">
     
                     <div class="box-header">
-                        <h3 class="box-title">KELOLA DATA INFORMASI MASKAPAI PENERBANGAN PIMPINAN</h3>
+                        <h3 class="box-title">KELOLA INFORMASI MASKAPAI PENERBANGAN PIMPINAN</h3>
                     </div>
         
         <div class="box-body">

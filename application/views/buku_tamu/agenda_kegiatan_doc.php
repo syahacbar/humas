@@ -62,33 +62,27 @@
             </tr>
         </table>
         <br/><br/>
-        <span class="f2"><center>BUKU TAMU</center></span>
-        <br/> <br/> <br/>
+        <span class="f2"><center>AGENDA KEGIATAN PIMPINAN<br><?php echo strtoupper($pimpinan);?></center></span>
+        <br/>
         
         <table class="word-table" style="margin-bottom: 10px">
             <tr style="background-color: #cec9c9">
                 <th style="text-align: center" width="10">No</th>
-                <th style="text-align: center">Hari</th>
-                <th style="text-align: center">Tanggal</th>
-                <th style="text-align: center">Nama</th>
-                <th style="text-align: center">Alamat</th>
-                <th style="text-align: center">Jabatan</th>
-                <th style="text-align: center">Tujuan</th>
-                <th style="text-align: center">Pesan/Saran</th>
-                <th style="text-align: center">Paraf</th>
+                <th style="text-align: center">Hari, Tanggal</th>
+                <th style="text-align: center">Waktu</th>
+                <th style="text-align: center">Tempat</th>
+                <th style="text-align: center">Kegiatan</th>
+                <th style="text-align: center">Keterangan</th>
 		
             </tr>
-            <?php foreach($buku_tamu_data as $row) { ?>
+            <?php foreach($agenda_kegiatan_data as $row) { ?>
                 <tr>
                     <td><?php echo ++$start ?></td>
-                    <td><?php echo hari_indo($row->tanggal) ?></td>
-                    <td><?php echo date_indo($row->tanggal) ?></td>
-                    <td><?php echo $row->nama ?></td>
-                    <td><?php echo $row->alamat ?></td>
-                    <td><?php echo $row->jabatan ?></td>
-                    <td><?php echo $row->tujuan ?></td>
-                    <td><?php echo $row->pesan_saran ?></td>
-                    <td></td>
+                    <td><?php echo longdate_indo($row->tanggal) ?></td>
+                    <td><?php echo $row->waktu ?></td>
+                    <td><?php echo $row->tempat ?></td>
+                    <td><?php echo $row->kegiatan ?></td>
+                    <td><?php echo $row->keterangan ?></td>
                 </tr>
             <?php } ?>
         </table>

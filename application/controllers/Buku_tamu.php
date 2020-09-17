@@ -47,16 +47,16 @@ class Buku_tamu extends CI_Controller
     public function create() 
     {
         $data = array(
-            'button' => 'Create',
+            'button' => 'TAMBAH',
             'action' => site_url('buku_tamu/create_action'),
-	    'id' => set_value('id'),
-	    'tanggal' => set_value('tanggal'),
-	    'nama' => set_value('nama'),
-	    'alamat' => set_value('alamat'),
-	    'jabatan' => set_value('jabatan'),
-	    'tujuan' => set_value('tujuan'),
-	    'pesan_saran' => set_value('pesan_saran'),
-	);
+            'id' => set_value('id'),
+            'tanggal' => set_value('tanggal'),
+            'nama' => set_value('nama'),
+            'alamat' => set_value('alamat'),
+            'jabatan' => set_value('jabatan'),
+            'tujuan' => set_value('tujuan'),
+            'pesan_saran' => set_value('pesan_saran'),
+        );
         $this->template->load('template','buku_tamu/buku_tamu_form', $data);
     }
     
@@ -68,13 +68,13 @@ class Buku_tamu extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'tanggal' => $this->input->post('tanggal',TRUE),
-		'nama' => $this->input->post('nama',TRUE),
-		'alamat' => $this->input->post('alamat',TRUE),
-		'jabatan' => $this->input->post('jabatan',TRUE),
-		'tujuan' => $this->input->post('tujuan',TRUE),
-		'pesan_saran' => $this->input->post('pesan_saran',TRUE),
-	    );
+                'tanggal' => $this->input->post('tanggal',TRUE),
+                'nama' => $this->input->post('nama',TRUE),
+                'alamat' => $this->input->post('alamat',TRUE),
+                'jabatan' => $this->input->post('jabatan',TRUE),
+                'tujuan' => $this->input->post('tujuan',TRUE),
+                'pesan_saran' => $this->input->post('pesan_saran',TRUE),
+            );
 
             $this->Buku_tamu_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success 2');
@@ -88,16 +88,16 @@ class Buku_tamu extends CI_Controller
 
         if ($row) {
             $data = array(
-                'button' => 'Update',
+                'button' => 'UPDATE',
                 'action' => site_url('buku_tamu/update_action'),
-		'id' => set_value('id', $row->id),
-		'tanggal' => set_value('tanggal', $row->tanggal),
-		'nama' => set_value('nama', $row->nama),
-		'alamat' => set_value('alamat', $row->alamat),
-		'jabatan' => set_value('jabatan', $row->jabatan),
-		'tujuan' => set_value('tujuan', $row->tujuan),
-		'pesan_saran' => set_value('pesan_saran', $row->pesan_saran),
-	    );
+                'id' => set_value('id', $row->id),
+                'tanggal' => set_value('tanggal', $row->tanggal),
+                'nama' => set_value('nama', $row->nama),
+                'alamat' => set_value('alamat', $row->alamat),
+                'jabatan' => set_value('jabatan', $row->jabatan),
+                'tujuan' => set_value('tujuan', $row->tujuan),
+                'pesan_saran' => set_value('pesan_saran', $row->pesan_saran),
+            );
             $this->template->load('template','buku_tamu/buku_tamu_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -113,13 +113,13 @@ class Buku_tamu extends CI_Controller
             $this->update($this->input->post('id', TRUE));
         } else {
             $data = array(
-		'tanggal' => $this->input->post('tanggal',TRUE),
-		'nama' => $this->input->post('nama',TRUE),
-		'alamat' => $this->input->post('alamat',TRUE),
-		'jabatan' => $this->input->post('jabatan',TRUE),
-		'tujuan' => $this->input->post('tujuan',TRUE),
-		'pesan_saran' => $this->input->post('pesan_saran',TRUE),
-	    );
+                'tanggal' => $this->input->post('tanggal',TRUE),
+                'nama' => $this->input->post('nama',TRUE),
+                'alamat' => $this->input->post('alamat',TRUE),
+                'jabatan' => $this->input->post('jabatan',TRUE),
+                'tujuan' => $this->input->post('tujuan',TRUE),
+                'pesan_saran' => $this->input->post('pesan_saran',TRUE),
+            );
 
             $this->Buku_tamu_model->update($this->input->post('id', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
@@ -143,15 +143,15 @@ class Buku_tamu extends CI_Controller
 
     public function _rules() 
     {
-	$this->form_validation->set_rules('tanggal', 'tanggal', 'trim|required');
-	$this->form_validation->set_rules('nama', 'nama', 'trim|required');
-	$this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
-	$this->form_validation->set_rules('jabatan', 'jabatan', 'trim|required');
-	$this->form_validation->set_rules('tujuan', 'tujuan', 'trim|required');
-	$this->form_validation->set_rules('pesan_saran', 'pesan saran', 'trim|required');
+        $this->form_validation->set_rules('tanggal', 'tanggal', 'trim|required');
+        $this->form_validation->set_rules('nama', 'nama', 'trim|required');
+        $this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
+        $this->form_validation->set_rules('jabatan', 'jabatan', 'trim|required');
+        $this->form_validation->set_rules('tujuan', 'tujuan', 'trim|required');
+        $this->form_validation->set_rules('pesan_saran', 'pesan saran', 'trim|required');
 
-	$this->form_validation->set_rules('id', 'id', 'trim');
-	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+        $this->form_validation->set_rules('id', 'id', 'trim');
+        $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
 
     public function excel()
@@ -176,45 +176,110 @@ class Buku_tamu extends CI_Controller
 
         $kolomhead = 0;
         xlsWriteLabel($tablehead, $kolomhead++, "No");
-	xlsWriteLabel($tablehead, $kolomhead++, "Tanggal");
-	xlsWriteLabel($tablehead, $kolomhead++, "Nama");
-	xlsWriteLabel($tablehead, $kolomhead++, "Alamat");
-	xlsWriteLabel($tablehead, $kolomhead++, "Jabatan");
-	xlsWriteLabel($tablehead, $kolomhead++, "Tujuan");
-	xlsWriteLabel($tablehead, $kolomhead++, "Pesan Saran");
+        xlsWriteLabel($tablehead, $kolomhead++, "Tanggal");
+        xlsWriteLabel($tablehead, $kolomhead++, "Nama");
+        xlsWriteLabel($tablehead, $kolomhead++, "Alamat");
+        xlsWriteLabel($tablehead, $kolomhead++, "Jabatan");
+        xlsWriteLabel($tablehead, $kolomhead++, "Tujuan");
+        xlsWriteLabel($tablehead, $kolomhead++, "Pesan Saran");
 
-	foreach ($this->Buku_tamu_model->get_all() as $data) {
-            $kolombody = 0;
+        foreach ($this->Buku_tamu_model->get_all() as $data) {
+                $kolombody = 0;
 
             //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
             xlsWriteNumber($tablebody, $kolombody++, $nourut);
-	    xlsWriteLabel($tablebody, $kolombody++, $data->tanggal);
-	    xlsWriteLabel($tablebody, $kolombody++, $data->nama);
-	    xlsWriteLabel($tablebody, $kolombody++, $data->alamat);
-	    xlsWriteLabel($tablebody, $kolombody++, $data->jabatan);
-	    xlsWriteLabel($tablebody, $kolombody++, $data->tujuan);
-	    xlsWriteLabel($tablebody, $kolombody++, $data->pesan_saran);
+            xlsWriteLabel($tablebody, $kolombody++, $data->tanggal);
+            xlsWriteLabel($tablebody, $kolombody++, $data->nama);
+            xlsWriteLabel($tablebody, $kolombody++, $data->alamat);
+            xlsWriteLabel($tablebody, $kolombody++, $data->jabatan);
+            xlsWriteLabel($tablebody, $kolombody++, $data->tujuan);
+            xlsWriteLabel($tablebody, $kolombody++, $data->pesan_saran);
 
-	    $tablebody++;
-            $nourut++;
+            $tablebody++;
+                $nourut++;
         }
 
-        xlsEOF();
+        xlsEOF(); 
         exit();
     }
 
     public function word()
     {
         header("Content-type: application/vnd.ms-word");
-        header("Content-Disposition: attachment;Filename=buku_tamu.doc");
+        header("Content-Disposition: attachment;Filename=BUKU TAMU.doc");
 
         $data = array(
             'buku_tamu_data' => $this->Buku_tamu_model->get_all(),
-            'start' => 0
+            'start' => 0,        
+            'logo_instansi' => base_url('assets/foto_profil/').$this->session->userdata('logo_instansi'),
+            'nama_instansi' => $this->session->userdata('nama_instansi'),
+            'alamat_instansi' => $this->session->userdata('alamat_instansi'),
+            'email_instansi' => $this->session->userdata('email_instansi'),
+            'notelp_instansi' => $this->session->userdata('notelp_instansi'),
+            'website_instansi' => $this->session->userdata('website_instansi'),
         );
         
         $this->load->view('buku_tamu/buku_tamu_doc',$data);
     }
+
+    function pdf() 
+    {
+        $this->load->library('pdf');
+        $pdf = new FPDF('l', 'mm', 'A4');
+        // membuat halaman baru
+        $pdf->AddPage();
+        $pdf->SetFont('Times', 'B', 13);
+        $pdf->Cell(22,20,$pdf->Image(base_url('assets/foto_profil/').$this->session->userdata('logo_instansi'),10,10,20,20),0,0,'C');        
+        $pdf->Cell(240,5,$this->session->userdata('nama_instansi'),0,1);
+        $pdf->SetFont('Times', '', 12);   
+        $pdf->Cell(22,5,'',0,0);  
+        $pdf->Cell(240,5,$this->session->userdata('alamat_instansi'),0,1);
+        $pdf->SetFont('Times', '', 12);   
+        $pdf->Cell(22,5,'',0,0);  
+        $pdf->Cell(240,5,'Telp/Fax: '.$this->session->userdata('notelp_instansi'),0,1);
+        $pdf->SetFont('Times', '', 11);   
+        $pdf->Cell(22,5,'',0,0);  
+        $pdf->Cell(240,5,'Email: '.$this->session->userdata('email_instansi').' Website: '.$this->session->userdata('website_instansi'),0,1);
+        $pdf->Cell(22,3,'','B',0);  
+        $pdf->Cell(240,3,'','B',1);
+
+
+        $pdf->Cell(10,5,'',0,1);
+        // setting jenis font yang akan digunakan
+        $pdf->SetFont('Times', 'B', 11);
+        // mencetak string 
+        $pdf->Cell(270,6,'BUKU TAMU',0,1,'C');
+        
+        $pdf->Cell(10,10,'',0,1);
+        $pdf->SetFont('Times', 'B', 10);
+        $pdf->Cell(10,6,'No',1,0,'C');
+        $pdf->Cell(20,6,'Hari',1,0,'C');
+        $pdf->Cell(30,6,'Tanggal',1,0,'C');
+        $pdf->Cell(40,6,'Nama',1,0,'C');
+        $pdf->Cell(40,6,'Alamat',1,0,'C');
+        $pdf->Cell(30,6,'Jabatan',1,0,'C');
+        $pdf->Cell(40,6,'Tujuan',1,0,'C');
+        $pdf->Cell(30,6,'Pesan/Saran',1,0,'C');
+        $pdf->Cell(30,6,'Paraf',1,1,'C');
+
+       $pdf->SetFont('Times', '', 10);
+       $buku_tamu_data = $this->Buku_tamu_model->get_all();
+        $no = 1;
+        foreach($buku_tamu_data as $row) {
+            $pdf->Cell(10,6,$no++,1,0,'C'); 
+            $pdf->Cell(20,6,hari_indo($row->tanggal),1,0,'C');
+            $pdf->Cell(30,6,date_indo($row->tanggal),1,0,'C');
+            $pdf->Cell(40,6,$row->nama,1,0,'L');
+            $pdf->Cell(40,6,$row->alamat,1,0,'L');
+            $pdf->Cell(30,6,$row->jabatan,1,0,'L');
+            $pdf->Cell(40,6,$row->tujuan,1,0,'L');
+            $pdf->Cell(30,6,$row->pesan_saran,1,0,'L');
+            $pdf->Cell(30,6,"",1,1,'L');
+        }
+        $pdf->SetTitle('BUKU TAMU');
+        $pdf->Output();
+    }
+
 
 }
 

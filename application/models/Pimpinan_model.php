@@ -17,14 +17,11 @@ class Pimpinan_model extends CI_Model
 
     // datatables
     function json1() {
-        $this->datatables->select('id,nama,tgl_keberangkatan,rute_keberangkatan,tgl_kepulangan,rute_kepulangan');
+        $this->datatables->select('id,nama');
         $this->datatables->from('pimpinan');
         //add this line for join
         //$this->datatables->join('table2', 'pimpinan.field = table2.field');
-        $this->datatables->add_column('action', anchor(site_url('pimpinan/infomaskapai/$1'),'<i class="fa fa-plane" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm'))." 
-        ".anchor(site_url('pimpinan/word/$1'),'<i class="fa fa-file-word-o" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm','target'=>'BLANK'))." 
-        ".anchor(site_url('pimpinan/pdf/$1'),'<i class="fa fa-file-pdf-o" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm','target'=>'BLANK'))." 
-            ".anchor(site_url('pimpinan/update/$1'),'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm'))." 
+        $this->datatables->add_column('action', anchor(site_url('pimpinan/update/$1'),'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm'))." 
                 ".anchor(site_url('pimpinan/delete/$1'),'<i class="fa fa-trash-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm" onclick="javasciprt: return confirm(\'Are You Sure ?\')"'), 'id');
         return $this->datatables->generate();
     }
@@ -35,10 +32,9 @@ class Pimpinan_model extends CI_Model
         //add this line for join
         //$this->datatables->join('table2', 'pimpinan.field = table2.field');
         $this->datatables->add_column('action', anchor(site_url('info_maskapai/pimpinan/$1'),'<i class="fa fa-plane" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm'))." 
-        ".anchor(site_url('pimpinan/word/$1'),'<i class="fa fa-file-word-o" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm','target'=>'BLANK'))." 
-        ".anchor(site_url('pimpinan/pdf/$1'),'<i class="fa fa-file-pdf-o" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm','target'=>'BLANK'))." 
-            ".anchor(site_url('pimpinan/update/$1'),'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm'))." 
-                ".anchor(site_url('pimpinan/delete/$1'),'<i class="fa fa-trash-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm" onclick="javasciprt: return confirm(\'Are You Sure ?\')"'), 'id');
+        ".anchor(site_url('info_maskapai/word/$1'),'<i class="fa fa-file-word-o" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm','target'=>'BLANK'))." 
+        ".anchor(site_url('info_maskapai/pdf/$1'),'<i class="fa fa-file-pdf-o" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm','target'=>'BLANK'))."
+        ".anchor(site_url('info_maskapai/update/$1'),'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm')) ,'id');
         return $this->datatables->generate();
     }
 

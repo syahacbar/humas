@@ -11,10 +11,10 @@
                         <div class='row'>
                             <div class='col-md-9'>
                                 <div style="padding-bottom: 10px;">
-                                    <?php echo anchor(site_url('pimpinan/tambah_keberangkatan/').$pimpinan->id, '<i class="fa fa-wpforms" aria-hidden="true"></i> Tambah Data', 'class="btn btn-danger btn-sm"'); ?></div>
+                                    <?php echo anchor(site_url('info_maskapai/tambah_keberangkatan/').$pimpinan->id, '<i class="fa fa-wpforms" aria-hidden="true"></i> Tambah Data', 'class="btn btn-danger btn-sm"'); ?></div>
                                 </div>
                                 <div class='col-md-3'>
-                                    <form action="<?php echo site_url('info_maskapai'); ?>" class="form-inline" method="get">
+                                    <form action="<?php echo site_url('info_maskapai/pimpinan').$pimpinan->id; ?>" class="form-inline" method="get">
                                         <div class="input-group">
                                             <input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
                                             <span class="input-group-btn">
@@ -71,9 +71,9 @@
                                     <td><?php echo $info_keberangkatan->sumber ?></td>
                                     <td style="text-align:center" width="200px">
                                         <?php 
-                                        echo anchor(site_url('pimpinan/update_keberangkatan/'.$pimpinan->id.'/'.$info_keberangkatan->id),'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
+                                        echo anchor(site_url('info_maskapai/update_keberangkatan/'.$pimpinan->id.'/'.$info_keberangkatan->id),'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
                                         echo '  '; 
-                                        echo anchor(site_url('pimpinan/delete_keberangkatan_action/'.$pimpinan->id.'/'.$info_keberangkatan->id),'<i class="fa fa-trash-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm" Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+                                        echo anchor(site_url('info_maskapai/delete_keberangkatan_action/'.$pimpinan->id.'/'.$info_keberangkatan->id),'<i class="fa fa-trash-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm" Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
                                         ?>
                                     </td>
 		                        </tr>
@@ -100,10 +100,10 @@
                         <div class='row'>
                             <div class='col-md-9'>
                                 <div style="padding-bottom: 10px;">
-                                    <?php echo anchor(site_url('pimpinan/tambah_kepulangan/').$pimpinan->id, '<i class="fa fa-wpforms" aria-hidden="true"></i> Tambah Data', 'class="btn btn-danger btn-sm"'); ?></div>
+                                    <?php echo anchor(site_url('info_maskapai/tambah_kepulangan/').$pimpinan->id, '<i class="fa fa-wpforms" aria-hidden="true"></i> Tambah Data', 'class="btn btn-danger btn-sm"'); ?></div>
                                 </div>
                                 <div class='col-md-3'>
-                                    <form action="<?php echo site_url('info_maskapai'); ?>" class="form-inline" method="get">
+                                    <form action="<?php echo site_url('info_maskapai/pimpinan').$pimpinan->id; ?>" class="form-inline" method="get">
                                         <div class="input-group">
                                             <input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
                                             <span class="input-group-btn">
@@ -160,9 +160,9 @@
                                     <td><?php echo $info_kepulangan->sumber ?></td>
                                     <td style="text-align:center" width="200px">
                                         <?php 
-                                        echo anchor(site_url('pimpinan/update_kepulangan/'.$pimpinan->id.'/'.$info_kepulangan->id),'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
+                                        echo anchor(site_url('info_maskapai/update_kepulangan/'.$pimpinan->id.'/'.$info_kepulangan->id),'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
                                         echo '  '; 
-                                        echo anchor(site_url('pimpinan/delete_kepulangan_action/'.$pimpinan->id.'/'.$info_kepulangan->id),'<i class="fa fa-trash-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm" Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+                                        echo anchor(site_url('info_maskapai/delete_kepulangan_action/'.$pimpinan->id.'/'.$info_kepulangan->id),'<i class="fa fa-trash-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm" Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
                                         ?>
                                     </td>
 		                        </tr>

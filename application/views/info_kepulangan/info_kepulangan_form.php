@@ -17,7 +17,7 @@
 			<td>
 			<div class="input-group">
                 <span class="input-group-addon">Rp.</span>
-                <input name="harga_tiket" id="harga_tiket" type="text" class="form-control" placeholder="Harga Tiket" value="<?php echo $harga_tiket;?>" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);">
+                <input name="harga_tiket" id="harga_tiket" type="text" class="form-control" placeholder="Harga Tiket" value="<?php echo $harga_tiket;?>">
                 <span class="input-group-addon">,00</span>
               </div>
 			</td>
@@ -26,7 +26,7 @@
 	    <tr><td width='200'>Sumber <?php echo form_error('sumber') ?></td><td><input type="text" class="form-control" name="sumber" id="sumber" placeholder="Sumber" value="<?php echo $sumber; ?>" /></td></tr>
 	    <tr><td></td><td><input type="hidden" name="id" value="<?php echo $id; ?>" /> <input type="hidden" name="pimpinan_id" value="<?php echo intval($this->uri->segment(3)); ?>" />
 	    <button type="submit" class="btn btn-danger"><i class="fa fa-floppy-o"></i> Simpan</button> 
-	    <a href="<?php echo site_url('pimpinan/infomaskapai/').intval($this->uri->segment(3)) ?>" class="btn btn-info"><i class="fa fa-sign-out"></i> Kembali</a></td></tr>
+	    <a href="<?php echo site_url('info_maskapai/pimpinan/').intval($this->uri->segment(3)) ?>" class="btn btn-info"><i class="fa fa-sign-out"></i> Kembali</a></td></tr>
 	</table></form>        </div>
 </div>
 </div>
