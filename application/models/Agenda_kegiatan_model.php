@@ -16,14 +16,25 @@ class Agenda_kegiatan_model extends CI_Model
     }
 
     // datatables
-    function json() {
-        $this->datatables->select('id,tanggal,waktu,tempat,kegiatan,keterangan,pimpinan_id');
-        $this->datatables->from('agenda_kegiatan');
+    function json1() {
+        $this->datatables->select('id,nama');
+        $this->datatables->from('pimpinan');
         //add this line for join
         //$this->datatables->join('table2', 'agenda_kegiatan.field = table2.field');
-        $this->datatables->add_column('action', anchor(site_url('agenda_kegiatan/read/$1'),'<i class="fa fa-eye" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm'))." 
-            ".anchor(site_url('agenda_kegiatan/update/$1'),'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm'))." 
-                ".anchor(site_url('agenda_kegiatan/delete/$1'),'<i class="fa fa-trash-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm" onclick="javasciprt: return confirm(\'Are You Sure ?\')"'), 'id');
+        $this->datatables->add_column('action', anchor(site_url('agenda_kegiatan/pimpinan/$1'),'<i class="fa fa-calendar" aria-hidden="true"></i>', array('class' => 'btn btn-warning btn-sm'))."
+            ".anchor(site_url('agenda_kegiatan/word/$1'),'<i class="fa fa-file-word-o" aria-hidden="true"></i>', array('class' => 'btn btn-warning btn-sm','target'=>'BLANK'))."    
+            ".anchor(site_url('agenda_kegiatan/pdf/$1'),'<i class="fa fa-file-pdf-o" aria-hidden="true"></i>', array('class' => 'btn btn-warning btn-sm','target'=>'BLANK')), 'id');
+        return $this->datatables->generate();
+    }
+
+    function json2($idpimpinan) {
+        $this->datatables->select('id,tanggal,waktu,tempat,kegiatan,keterangan,namapimpinan');
+        $this->datatables->from('v_agenda_kegiatan');
+        $this->datatables->where('idpimpinan',$idpimpinan);
+        //add this line for join
+        //$this->datatables->join('table2', 'agenda_kegiatan.field = table2.field');
+        $this->datatables->add_column('action', anchor(site_url('agenda_kegiatan/update/'.$this->uri->segment(3).'/$1'),'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', array('class' => 'btn btn-warning btn-sm'))." 
+            ".anchor(site_url('agenda_kegiatan/delete/$1'),'<i class="fa fa-trash-o" aria-hidden="true"></i>','class="btn btn-warning btn-sm" onclick="javasciprt: return confirm(\'Are You Sure ?\')"'), 'id');
         return $this->datatables->generate();
     }
 
@@ -34,23 +45,31 @@ class Agenda_kegiatan_model extends CI_Model
         return $this->db->get($this->table)->result();
     }
 
+    // get all by pimpinan
+    function get_all_by_pimpinan($id)
+    {
+        $this->db->where('idpimpinan',$id);
+        $this->db->order_by('tanggal', 'ASC');
+        $this->db->order_by('waktu', 'ASC');
+        return $this->db->get('v_agenda_kegiatan')->result();
+    }
     // get data by id
     function get_by_id($id)
     {
-        $this->db->where($this->id, $id);
-        return $this->db->get($this->table)->row();
+        $this->db->where('id', $id);
+        return $this->db->get('v_agenda_kegiatan')->row();
     }
     
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('id', $q);
-	$this->db->or_like('tanggal', $q);
-	$this->db->or_like('waktu', $q);
-	$this->db->or_like('tempat', $q);
-	$this->db->or_like('kegiatan', $q);
-	$this->db->or_like('keterangan', $q);
-	$this->db->or_like('pimpinan_id', $q);
-	$this->db->from($this->table);
+        $this->db->or_like('tanggal', $q);
+        $this->db->or_like('waktu', $q);
+        $this->db->or_like('tempat', $q);
+        $this->db->or_like('kegiatan', $q);
+        $this->db->or_like('keterangan', $q);
+        $this->db->or_like('pimpinan_id', $q);
+        $this->db->from($this->table);
         return $this->db->count_all_results();
     }
 

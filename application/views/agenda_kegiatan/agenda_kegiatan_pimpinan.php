@@ -5,24 +5,18 @@
                 <div class="box box-warning box-solid">
     
                     <div class="box-header">
-                        <h3 class="box-title">KELOLA AGENDA KEGIATAN <strong><?php echo strtoupper($pimpinandata->nama);?></strong></h3>
+                        <h3 class="box-title">KELOLA AGENDA KEGIATAN PIMPINAN</h3>
                     </div>
         
         <div class="box-body">
         <div style="padding-bottom: 10px;">
-        <?php echo anchor(site_url('agenda_kegiatan/create/').$pimpinandata->id, '<i class="fa fa-wpforms" aria-hidden="true"></i> Tambah Data', 'class="btn btn-warning btn-sm"'); ?>
-		<?php echo anchor(site_url('agenda_kegiatan/pdf/').$pimpinandata->id, '<i class="fa fa-file-excel-o" aria-hidden="true"></i> Export PDF', 'class="btn btn-danger btn-sm" target="BLANK"'); ?>
-		<?php echo anchor(site_url('agenda_kegiatan/word/').$pimpinandata->id, '<i class="fa fa-file-word-o" aria-hidden="true"></i> Export Ms Word', 'class="btn btn-primary btn-sm" target="BLANK"'); ?></div>
+        </div>
         <table class="table table-bordered table-striped" id="mytable">
             <thead>
                 <tr>
                     <th width="30px">No</th>
-		    <th>Tanggal</th>
-		    <th>Waktu</th>
-		    <th>Tempat</th>
-		    <th>Kegiatan</th>
-		    <th>Keterangan</th>
-		    <th width="200px">Aksi</th>
+                    <th>Nama Pimpinan</th>
+                    <th width="200px">Aksi</th>
                 </tr>
             </thead>
 	    
@@ -67,19 +61,19 @@
                     },
                     processing: true,
                     serverSide: true,
-                    ajax: {"url": "<?php echo base_url('agenda_kegiatan/json2/').$this->uri->segment(3);?>", "type": "POST"},
+                    ajax: {"url": "<?php echo base_url('agenda_kegiatan/json1');?>", "type": "POST"},
                     columns: [
                         {
                             "data": "id",
                             "orderable": false
-                        },{"data": "tanggal"},{"data": "waktu"},{"data": "tempat"},{"data": "kegiatan"},{"data": "keterangan"},
+                        },{"data": "nama"},
                         {
                             "data" : "action",
                             "orderable": false,
                             "className" : "text-center"
                         }
                     ],
-                    order: [[1, 'asc']],
+                    order: [[0, 'desc']],
                     rowCallback: function(row, data, iDisplayIndex) {
                         var info = this.fnPagingInfo();
                         var page = info.iPage;

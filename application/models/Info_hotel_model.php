@@ -21,8 +21,9 @@ class Info_hotel_model extends CI_Model
         $this->datatables->from('v_info_hotel');
         //add this line for join
         //$this->datatables->join('table2', 'info_hotel.field = table2.field');
-        $this->datatables->add_column('action', anchor(site_url('info_hotel/word/$1'),'<i class="fa fa-print" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm', 'target' => 'BLANK'))." 
-            ".anchor(site_url('info_hotel/update/$1'),'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm'))." 
+        $this->datatables->add_column('action', anchor(site_url('info_hotel/word/$1'),'<i class="fa fa-file-word-o" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm', 'target' => 'BLANK'))." 
+                ".anchor(site_url('info_hotel/pdf/$1'),'<i class="fa fa-file-pdf-o" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm', 'target' => 'BLANK'))."    
+                ".anchor(site_url('info_hotel/update/$1'),'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm'))." 
                 ".anchor(site_url('info_hotel/delete/$1'),'<i class="fa fa-trash-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm" onclick="javasciprt: return confirm(\'Are You Sure ?\')"'), 'id');
         return $this->datatables->generate();
     }

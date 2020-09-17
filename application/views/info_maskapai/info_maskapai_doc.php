@@ -90,7 +90,7 @@
                 ?>
                 <tr>
                     <td><?php echo ++$start ?></td>
-                    <td><?php echo $info_keberangkatan->tgl_penerbangan ?></td>
+                    <td><?php echo date_indo($info_keberangkatan->tgl_penerbangan) ?></td>
                     <td><?php echo $info_keberangkatan->nama_maskapai ?></td>
                     <td><?php echo $info_keberangkatan->jam_berangkat ?></td>
                     <td><?php echo $info_keberangkatan->jam_datang ?></td>
@@ -129,7 +129,7 @@
                 ?>
                 <tr>
                     <td><?php echo ++$start ?></td>
-                    <td><?php echo $info_kepulangan->tgl_penerbangan ?></td>
+                    <td><?php echo date_indo($info_kepulangan->tgl_penerbangan) ?></td>
                     <td><?php echo $info_kepulangan->nama_maskapai ?></td>
                     <td><?php echo $info_kepulangan->jam_berangkat ?></td>
                     <td><?php echo $info_kepulangan->jam_datang ?></td>

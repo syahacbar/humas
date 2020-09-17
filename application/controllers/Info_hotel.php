@@ -231,6 +231,59 @@ class Info_hotel extends CI_Controller
         $this->load->view('info_hotel/info_hotel_doc',$data);
     }
 
+    
+    function pdf($id) 
+    {
+        $row=$this->Info_hotel_model->get_by_id($id);
+        $this->load->library('pdf');
+        $pdf = new FPDF('l', 'mm', 'A4');
+        // membuat halaman baru
+        $pdf->AddPage();
+        $pdf->SetFont('Times', 'B', 13);
+        $pdf->Cell(22,20,$pdf->Image(base_url('assets/foto_profil/').$this->session->userdata('logo_instansi'),10,10,20,20),0,0,'C');        
+        $pdf->Cell(240,5,$this->session->userdata('nama_instansi'),0,1);
+        $pdf->SetFont('Times', '', 12);   
+        $pdf->Cell(22,5,'',0,0);  
+        $pdf->Cell(240,5,$this->session->userdata('alamat_instansi'),0,1);
+        $pdf->SetFont('Times', '', 12);   
+        $pdf->Cell(22,5,'',0,0);  
+        $pdf->Cell(240,5,'Telp/Fax: '.$this->session->userdata('notelp_instansi'),0,1);
+        $pdf->SetFont('Times', '', 11);   
+        $pdf->Cell(22,5,'',0,0);  
+        $pdf->Cell(240,5,'Email: '.$this->session->userdata('email_instansi').' Website: '.$this->session->userdata('website_instansi'),0,1);
+        $pdf->Cell(22,3,'','B',0);  
+        $pdf->Cell(240,3,'','B',1);
+
+
+        $pdf->Cell(10,5,'',0,1);
+        // setting jenis font yang akan digunakan
+        $pdf->SetFont('Times', 'B', 11);
+        // mencetak string 
+        $pdf->Cell(270,6,'INFORMASI HOTEL',0,1,'C');
+        $pdf->Cell(270,6,strtoupper($row->namapimpinan),0,1,'C');
+        $pdf->Cell(10,10,'',0,1);
+        $pdf->SetFont('Times', 'B', 10);
+        $pdf->Cell(10,6,'No',1,0,'C');
+        $pdf->Cell(60,6,'Nama Hotel',1,0,'C');
+        $pdf->Cell(50,6,'Jenis Kamar',1,0,'C');
+        $pdf->Cell(50,6,'Tarif Kamar',1,0,'C');
+        $pdf->Cell(70,6,'Fasilitas Hotel',1,0,'C');
+        $pdf->Cell(40,6,'Sumber',1,1,'C');
+
+       $pdf->SetFont('Times', '', 10);
+       
+        $no = 1;
+            $pdf->Cell(10,6,$no++,1,0,'C'); 
+            $pdf->Cell(60,6,$row->nama_hotel,1,0,'L');
+            $pdf->Cell(50,6,$row->jenis_kamar,1,0,'C');
+            $pdf->Cell(50,6,rupiah($row->tarif_kamar),1,0,'R');
+            $pdf->Cell(70,6,$row->fasilitas_hotel,1,0,'C');
+            $pdf->Cell(40,6,$row->sumber,1,1,'L');
+        
+        $pdf->SetTitle('INFORMASI HOTEL '.$row->namapimpinan);
+        $pdf->Output();
+    }
+
 }
 
 /* End of file Info_hotel.php */

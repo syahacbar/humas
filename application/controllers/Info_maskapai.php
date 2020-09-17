@@ -17,6 +17,15 @@ class Info_maskapai extends CI_Controller
     }
     public function index()
     {
+        $this->template->load('template','info_maskapai/info_maskapai_list');
+    }
+
+    public function json() {
+        header('Content-Type: application/json');
+        echo $this->Pimpinan_model->json2();
+    }
+    
+    public function pimpinan($idpimpinan) {
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->uri->segment(4));
         
@@ -31,8 +40,8 @@ class Info_maskapai extends CI_Controller
         $config['per_page'] = 10;
         $config['page_query_string'] = FALSE;
         $config['total_rows'] = $this->Info_keberangkatan_model->total_rows($q);
-        $info_keberangkatan = $this->Info_keberangkatan_model->get_limit_data($config['per_page'], $start, $q);
-        $info_kepulangan = $this->Info_kepulangan_model->get_limit_data($config['per_page'], $start, $q);
+        $info_keberangkatan = $this->Info_keberangkatan_model->get_limit_data($config['per_page'], $start, $q,$idpimpinan);
+        $info_kepulangan = $this->Info_kepulangan_model->get_limit_data($config['per_page'], $start, $q, $idpimpinan);
         $config['full_tag_open'] = '<ul class="pagination pagination-sm no-margin pull-right">';
         $config['full_tag_close'] = '</ul>';
         $this->load->library('pagination');
@@ -45,11 +54,10 @@ class Info_maskapai extends CI_Controller
             'pagination' => $this->pagination->create_links(),
             'total_rows' => $config['total_rows'],
             'start' => $start,
-            'pimpinan' => '',
+            'pimpinan' => $this->Pimpinan_model->get_by_id($idpimpinan),
         );
         $this->template->load('template','info_maskapai/info_maskapai_list', $data);
     }
-    
 
     
 
