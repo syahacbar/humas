@@ -144,7 +144,7 @@ class Agenda_rapat extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id', TRUE));
         } else {
-            $this->upload_lampiran();
+            $this->upload_lampiran($this->input->post('id', TRUE));
 
             if (empty($_FILES["file1"]["name"]))
             {
